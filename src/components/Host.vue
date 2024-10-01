@@ -1,6 +1,5 @@
 <script>
 export default {
-    name: 'Host',
     data() {
         return {
             cruise: {
