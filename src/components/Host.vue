@@ -1,5 +1,7 @@
 <script>
+import BookingList from './BookingList.vue';
 export default {
+    name: 'Host',
     data() {
         return {
             cruise: {
@@ -18,6 +20,9 @@ export default {
     }
 }
 // TODO: Add components
+components: {
+    BookingList
+}
 // TODO: Add methods
 </script>
 
@@ -30,9 +35,42 @@ export default {
         <h2>{{ cruise.name }}</h2>
         <div>{{ cruise.description }}</div>
         <hr />
-        <div class="row">
-            <div class="" v-for="(cabin, index) in cabins" :key="index">
+        <div>
+            <div v-for="(cabin, index) in cruise.cabins" :key="index">
+                <div>{{ cabin.name }}</div>
+                <div>{{ cabin.price }}</div>
             </div>
+        </div>
+        <div>
+            <BookingList :bookings="bookings"></BookingList>
         </div>
     </div>
 </template>
+
+<style scoped>
+body {
+    background-color: #f2f2f2;
+    margin: 0, 5%;
+    font-family: tahoma;
+}
+
+.row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    vertical-align: middle;
+    margin: 2em;
+}
+
+.button {
+    background-color: #39495c;
+    border-radius: 5px;
+    color: white;
+    text-align: center;
+}
+
+.nav-bar {
+    background: linear-gradient(-50deg, #010801, #0d0d60);
+    height: 60px;
+    margin-bottom: 25px;
+}
+</style>
