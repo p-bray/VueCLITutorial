@@ -43,16 +43,17 @@ export default {
             </div>
         </div>
         <div>
-            <booking-list :bookings="bookings"></booking-list>
+            <BookingList :bookings="bookings"></BookingList>
         </div>
     </div>
 </template>
 
-<style scoped>
+<style>
 body {
     background-color: #f2f2f2;
     margin: 0, 5%;
     font-family: tahoma;
+    color: #39495c;
 }
 
 .row {

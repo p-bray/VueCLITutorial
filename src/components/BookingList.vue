@@ -11,7 +11,6 @@
 </template>
 
 <script>
-
 export default {
     props: {
         bookings: Array
@@ -38,7 +37,3 @@ export default {
 
 
 </script>
-
-
-<style scoped>
-</style>
