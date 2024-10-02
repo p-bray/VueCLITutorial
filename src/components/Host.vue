@@ -17,12 +17,13 @@ export default {
                 { name: 'Sample', price: 0 }
             ]
         }
+    },
+    components: {
+        BookingList
     }
 }
 // TODO: Add components
-components: {
-    BookingList
-}
+
 // TODO: Add methods
 </script>
 
@@ -42,7 +43,7 @@ components: {
             </div>
         </div>
         <div>
-            <BookingList :bookings="bookings"></BookingList>
+            <booking-list :bookings="bookings"></booking-list>
         </div>
     </div>
 </template>
