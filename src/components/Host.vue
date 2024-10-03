@@ -1,5 +1,6 @@
 <script>
 import BookingList from './BookingList.vue';
+import BookingForm from './BookingForm.vue';
 export default {
     name: 'Host',
     data() {
@@ -19,7 +20,19 @@ export default {
         }
     },
     components: {
-        BookingList
+        BookingList,
+        BookingForm,
+    },
+    methods: {
+        //You do not have to use a "handle" prefix on event handlers, I just like it. 
+        handleBookingCreated(){
+            const cabin = this.cruise.cabins[cabinIndex];
+            const booking = {
+                cabin: cabin.name,
+                price: cabin.price
+            }
+            this.bookings.push(booking);
+        }
     }
 }
 // TODO: Add components
@@ -44,6 +57,7 @@ export default {
         </div>
         <div>
             <BookingList :bookings="bookings"></BookingList>
+            <BookingForm :cabins="cruise.cabins" @booking-created="handleBookingCreated"></BookingForm>
         </div>
     </div>
 </template>
