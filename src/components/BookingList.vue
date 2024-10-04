@@ -4,7 +4,7 @@
             Here's your current bookings:
         </h2>
         <div class="row" v-for="(booking, index) in bookings" :key="index">
-            <div>{{ booking.name }}</div>
+            <div>{{ booking.cabin }}</div>
         </div>
         <div class="row">Total: {{ totalDisplay }}</div>
     </section>
@@ -12,6 +12,7 @@
 
 <script>
 export default {
+    name: "BookingList",
     props: {
         bookings: Array
     },

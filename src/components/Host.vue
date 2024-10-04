@@ -1,3 +1,25 @@
+<template>
+    <h1>Relecloud Galaxy Tours</h1>
+    <div class="nav-bar">
+    </div>
+    
+    <div>
+        <h2>{{ cruise.name }}</h2>
+        <div>{{ cruise.description }}</div>
+        <hr />
+        <div>
+            <div v-for="(cabin, index) in cruise.cabins" :key="index">
+                <div>{{ cabin.name }}</div>
+                <div>{{ cabin.price }}</div>
+            </div>
+        </div>
+        <div>
+            <BookingForm :cabins="cruise.cabins" @booking-created="handleBookingCreated"></BookingForm>
+            <BookingList :bookings="bookings"></BookingList>
+        </div>
+    </div>
+</template>
+
 <script>
 import BookingList from './BookingList.vue';
 import BookingForm from './BookingForm.vue';
@@ -16,7 +38,7 @@ export default {
             },
             bookings: [
                 { name: 'Sample', price: 0 }
-            ]
+            ],
         }
     },
     components: {
@@ -25,7 +47,8 @@ export default {
     },
     methods: {
         //You do not have to use a "handle" prefix on event handlers, I just like it. 
-        handleBookingCreated(){
+        handleBookingCreated(cabinIndex) {
+            console.log(cabinIndex);
             const cabin = this.cruise.cabins[cabinIndex];
             const booking = {
                 cabin: cabin.name,
@@ -41,26 +64,7 @@ export default {
 </script>
 
 
-<template>
-    <div class="nav-bar"></div>
-    <h1>Relecloud Galaxy Tours</h1>
-    
-    <div>
-        <h2>{{ cruise.name }}</h2>
-        <div>{{ cruise.description }}</div>
-        <hr />
-        <div>
-            <div v-for="(cabin, index) in cruise.cabins" :key="index">
-                <div>{{ cabin.name }}</div>
-                <div>{{ cabin.price }}</div>
-            </div>
-        </div>
-        <div>
-            <BookingList :bookings="bookings"></BookingList>
-            <BookingForm :cabins="cruise.cabins" @booking-created="handleBookingCreated"></BookingForm>
-        </div>
-    </div>
-</template>
+
 
 <style>
 body {
